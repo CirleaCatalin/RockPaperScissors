@@ -7,19 +7,61 @@ const game = () => {
     const options = document.querySelectorAll(".options button");
     const playerHand = document.querySelectorAll(".player-hand");
     const computerHand = document.querySelectorAll(".computer-hand");
-    //Computer Options
 
     const computerOptions = ["rock", "paper", "scissors"];
 
-    const computerNumber = Math.floor(Math.random() * 3);
-
     options.forEach((option) => {
       option.addEventListener("click", function () {
-        console.log(this);
+        const computerNumber = Math.floor(Math.random() * 3);
+        const computerChoice = computerOptions[computerNumber];
+        console.log(computerChoice);
+        //Calling comparehands
+
+        //update images
+        playerHand.src = `./assets/${this.textContent}.png`;
+        computerHand.src = `./assets/${computerChoice}.png`;
       });
     });
   };
 
+  const compareHands = (playerChoice, computerChoice) => {
+    const winner = document.querySelector(".winner");
+    //tie
+    if (playerChoice === computerChoice) {
+      winner.textContent = "It is a tie";
+      return;
+    }
+    // check for rock
+    if (playerChoice === "rock") {
+      if (computerChoice === "scissors") {
+        winner.textContent = "Player wins";
+        return;
+      } else {
+        winner.textContent = "Computer wins";
+        return;
+      }
+    }
+    // check for paper
+    if (playerChoice === "paper") {
+      if (computerChoice === "scissors") {
+        winner.textContent = "Computer wins";
+        return;
+      } else {
+        winner.textContent = "Player wins";
+        return;
+      }
+    }
+    // check for scissors
+    if (playerChoice === "scissors") {
+      if (computerChoice === "rock") {
+        winner.textContent = "Computer wins";
+        return;
+      } else {
+        winner.textContent = "Player wins";
+        return;
+      }
+    }
+  };
   playMatch();
 };
 
