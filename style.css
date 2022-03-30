@@ -36,7 +36,7 @@ section {
   transition: opacity 0.5s ease;
 }
 
-.intro h1 {
+.match h2 {
   font-size: 50px;
 }
 .match button {
@@ -68,4 +68,9 @@ section {
 
 .player-hand {
   transform: rotateY(180deg);
+}
+
+.hands {
+  margin-left: 80px;
+  margin-right: 80px;
 }
