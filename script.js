@@ -16,7 +16,7 @@ const game = () => {
         const computerChoice = computerOptions[computerNumber];
         console.log(computerChoice);
         //Calling comparehands
-
+        compareHands(this.textContent, computerChoice);
         //update images
         playerHand.src = `./assets/${this.textContent}.png`;
         computerHand.src = `./assets/${computerChoice}.png`;
@@ -24,44 +24,65 @@ const game = () => {
     });
   };
 
+  const updateScore = () => {
+    const playerScore = document.querySelector(".player-score p");
+    const computerScore = document.querySelector(".computer-score p");
+    playerScore.textContent = pScore;
+    computerScore.textContent = cScore;
+  };
+
   const compareHands = (playerChoice, computerChoice) => {
+    //Update Text
     const winner = document.querySelector(".winner");
-    //tie
+    //Checking for a tie
     if (playerChoice === computerChoice) {
       winner.textContent = "It is a tie";
       return;
     }
-    // check for rock
+    //Check for Rock
     if (playerChoice === "rock") {
       if (computerChoice === "scissors") {
-        winner.textContent = "Player wins";
+        winner.textContent = "Player Wins";
+        pScore++;
+        updateScore();
         return;
       } else {
-        winner.textContent = "Computer wins";
+        winner.textContent = "Computer Wins";
+        cScore++;
+        updateScore();
         return;
       }
     }
-    // check for paper
+    //Check for Paper
     if (playerChoice === "paper") {
       if (computerChoice === "scissors") {
-        winner.textContent = "Computer wins";
+        winner.textContent = "Computer Wins";
+        cScore++;
+        updateScore();
         return;
       } else {
-        winner.textContent = "Player wins";
+        winner.textContent = "Player Wins";
+        pScore++;
+        updateScore();
         return;
       }
     }
-    // check for scissors
+    //Check for Scissors
     if (playerChoice === "scissors") {
       if (computerChoice === "rock") {
-        winner.textContent = "Computer wins";
+        winner.textContent = "Computer Wins";
+        cScore++;
+        updateScore();
         return;
       } else {
-        winner.textContent = "Player wins";
+        winner.textContent = "Player Wins";
+        pScore++;
+        updateScore();
         return;
       }
     }
   };
+
   playMatch();
 };
 
