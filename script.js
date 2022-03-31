@@ -5,8 +5,8 @@ const game = () => {
   const playMatch = () => {
     const match = document.querySelector(".match");
     const options = document.querySelectorAll(".options button");
-    const playerHand = document.querySelectorAll(".player-hand");
-    const computerHand = document.querySelectorAll(".computer-hand");
+    const playerHand = document.querySelector(".player-hand");
+    const computerHand = document.querySelector(".computer-hand");
 
     const computerOptions = ["rock", "paper", "scissors"];
 
